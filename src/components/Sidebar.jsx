@@ -52,12 +52,12 @@ export default function Sidebar() {
 const navItems = [
   {
     label: 'New Applications',
-    path: '/dash/enrollees',
+    path: '/dash/newApplications',
     icon: <RiMailUnreadFill />,
   },
   {
-    label: 'Students',
-    path: '/dash/instructors',
+    label: 'Enrollees',
+    path: '/dash/enrollees',
     icon: <RiTeamFill />,
   },
   {

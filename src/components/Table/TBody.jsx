@@ -31,7 +31,7 @@ export default function TBody({
           <td className='px-4 text-lg font-semibold border-l-2 border-gray-500 text-center'>
             <div className='flex justify-evenly'>
               <Link
-                to={`${action}?id=${item._id}`}
+                to={`${action}/${item._id}`}
                 state={item}
                 className='flex p-2 items-center text-indigo-700 text-sm font-bold gap-1 hover:bg-indigo-300 rounded-full'
               >
@@ -39,7 +39,8 @@ export default function TBody({
                 {actionLabel}
               </Link>
               <Link
-                to={`${remove}?id=${item._id}`}
+                to={`${remove}/${item._id}`}
+                state={item}
                 className='flex p-2 items-center text-rose-700 text-sm font-bold gap-1 hover:bg-rose-300 rounded-full'
               >
                 <RiDeleteBin7Fill />

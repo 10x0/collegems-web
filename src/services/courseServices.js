@@ -6,8 +6,8 @@ export const fetchAllCourses = () => {
     .get('/courses')
     .then((response) => response.data)
     .catch((error) => {
-      toast.error(error?.message);
-      throw new Error(error?.message);
+      toast.error(error?.response?.data?.message);
+      throw new Error(error?.response?.data?.message);
     });
 };
 
@@ -16,7 +16,27 @@ export const addCourse = (course) => {
     .post('/courses', course)
     .then((response) => response.data)
     .catch((error) => {
-      toast.error(error?.message);
-      throw new Error(error?.message);
+      toast.error(error?.response?.data?.message);
+      throw new Error(error?.response?.data?.message);
+    });
+};
+
+export const editCourse = (course) => {
+  return http
+    .put(`/courses/${course._id}`, course)
+    .then((response) => response.data)
+    .catch((error) => {
+      toast.error(error?.response?.data?.message);
+      throw new Error(error?.response?.data?.message);
+    });
+};
+
+export const deleteCourse = (id) => {
+  return http
+    .delete(`/courses/${id}`)
+    .then((response) => response.data)
+    .catch((error) => {
+      toast.error(error?.response?.data?.message);
+      throw new Error(error?.response?.data?.message);
     });
 };

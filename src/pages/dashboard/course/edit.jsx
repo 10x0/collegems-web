@@ -1,29 +1,34 @@
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { RiArrowLeftLine } from 'react-icons/ri';
 import { useMutation } from '@tanstack/react-query';
 
 import Spinner from '../../../components/Spinner';
-import { addCourse } from '../../../services/courseServices';
-import { useLocation } from 'react-router-dom';
+import { editCourse } from '../../../services/courseServices';
+import { useParams } from 'react-router-dom';
 
 export default function EditCourse() {
-  const [name, setName] = useState('');
-  const [duration, setDuration] = useState('1 year');
-  const [fee, setFee] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [description, setDescription] = useState('');
-
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.state);
-  const mutation = useMutation({ mutationFn: addCourse });
+  const { id } = useParams();
 
+  const [name, setName] = useState(location.state.name);
+  const [duration, setDuration] = useState(location.state.duration);
+  const [fee, setFee] = useState(location.state.fee);
+  const [startDate, setStartDate] = useState(
+    new Date(location.state.startDate).toISOString().substring(0, 10)
+  );
+  const [description, setDescription] = useState(location.state.description);
+
+  const mutation = useMutation({ mutationFn: editCourse });
+
+  console.log(location.state);
   const handleSubmit = (e) => {
     e.preventDefault();
 
     mutation.mutate({
+      _id: id,
       name,
       duration,
       fee,
@@ -50,7 +55,7 @@ export default function EditCourse() {
         <RiArrowLeftLine />
         Go back
       </button>
-      <h1 className='text-5xl font-semibold'>Add Course</h1>
+      <h1 className='text-5xl font-semibold'>Edit Course</h1>
       <section className='w-1/2 m-auto'>
         <form onSubmit={handleSubmit}>
           <div className='my-2'>

@@ -6,10 +6,11 @@ import AboutPage from './pages/about';
 import PolicyPage from './pages/policy';
 import TermsPage from './pages/terms';
 import ErrorPage from './pages/error';
-import { fetchAllCourses } from './services/courseServices';
 import AllCourses from './pages/dashboard/course/all';
 import NotFoundPage from './pages/not-found';
 import AddCourse from './pages/dashboard/course/add';
+import EditCourse from './pages/dashboard/course/edit';
+import DeleteCourse from './pages/dashboard/course/delete';
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +66,14 @@ export const router = createBrowserRouter([
           {
             path: 'addCourse',
             element: <AddCourse />,
+          },
+          {
+            path: 'editCourse/:id',
+            element: <EditCourse />,
+          },
+          {
+            path: 'deleteCourse/:id',
+            element: <DeleteCourse />,
           },
         ],
       },
