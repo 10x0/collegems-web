@@ -10,3 +10,13 @@ export const fetchAllCourses = () => {
       throw new Error(error?.message);
     });
 };
+
+export const addCourse = (course) => {
+  return http
+    .post('/courses', course)
+    .then((response) => response.data)
+    .catch((error) => {
+      toast.error(error?.message);
+      throw new Error(error?.message);
+    });
+};

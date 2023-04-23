@@ -24,12 +24,12 @@ export default function Sidebar() {
         <img src='/vite.svg' alt='logo' width={100} />
         <h2>
           Hello,{' '}
-          <span className='font-semibold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500'>
+          <span className='font-semibold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-indigo-700'>
             {session.name}
           </span>
         </h2>
         <button
-          className='bg-violet-200 p-2 text-violet-700 hover:bg-violet-300 text-xs'
+          className='bg-gray-200 p-2 text-gray-700 hover:bg-gray-300 text-sm font-semibold rounded-full'
           onClick={handleLogout}
         >
           Logout
@@ -74,11 +74,13 @@ const navItems = [
 
 const NavItem = ({ label, path, icon }) => {
   return (
-    <section className='my-8 font-semibold text-xl'>
+    <section className='my-4 font-semibold text-xl'>
       <NavLink
         to={path}
         className={({ isActive }) =>
-          `flex items-center gap-2 ${isActive && 'text-violet-500'}`
+          `p-4 flex items-center gap-2 hover:bg-indigo-300 hover:text-indigo-700 rounded-full ${
+            isActive && 'text-indigo-700'
+          }`
         }
       >
         {icon}

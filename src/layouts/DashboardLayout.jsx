@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { Outlet, Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-import Sidebar from '../components/sidebar';
+import Sidebar from '../components/Sidebar';
 
 export function DashboardLayout() {
   const location = useLocation();

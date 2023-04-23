@@ -9,6 +9,7 @@ import ErrorPage from './pages/error';
 import { fetchAllCourses } from './services/courseServices';
 import AllCourses from './pages/dashboard/course/all';
 import NotFoundPage from './pages/not-found';
+import AddCourse from './pages/dashboard/course/add';
 
 export const router = createBrowserRouter([
   {
@@ -54,10 +55,18 @@ export const router = createBrowserRouter([
       },
       {
         path: 'courses',
-        loader: fetchAllCourses,
         errorElement: <ErrorPage />,
-        element: <AllCourses />,
-        lazy: () => import('./pages/dashboard/course/all'),
+        children: [
+          {
+            path: '',
+            element: <AllCourses />,
+            lazy: () => import('./pages/dashboard/course/all'),
+          },
+          {
+            path: 'addCourse',
+            element: <AddCourse />,
+          },
+        ],
       },
       { path: '*', element: <NotFoundPage /> },
     ],
