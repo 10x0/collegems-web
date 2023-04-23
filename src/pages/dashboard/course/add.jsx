@@ -68,15 +68,14 @@ export default function AddCourse() {
               type='text'
               name='duration'
               id='duration'
-              // defaultValue='1 year'
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
             >
-              <option value='6 months'>6 months</option>
-              <option value='1 year'>1 year</option>
-              <option value='1 year and 6 months'>1 year and 6 months</option>
-              <option value='2 years'>2 years</option>
-              <option value='3 years'>3 years</option>
+              <option value={1}>1 year</option>
+              <option value={1.5}>1 year and 6 months</option>
+              <option value={2}>2 years</option>
+              <option value={3}>3 years</option>
+              <option value={4}>4 years</option>
             </select>
           </div>
           <div className='my-2'>

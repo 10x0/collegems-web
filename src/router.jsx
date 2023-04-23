@@ -11,6 +11,11 @@ import NotFoundPage from './pages/not-found';
 import AddCourse from './pages/dashboard/course/add';
 import EditCourse from './pages/dashboard/course/edit';
 import DeleteCourse from './pages/dashboard/course/delete';
+import AllModules from './pages/dashboard/module/all';
+import DeleteModule from './pages/dashboard/module/delete';
+import { fetchAllCourses } from './services/courseServices';
+import AddModule from './pages/dashboard/module/add';
+import EditModule from './pages/dashboard/module/edit';
 
 export const router = createBrowserRouter([
   {
@@ -74,6 +79,33 @@ export const router = createBrowserRouter([
           {
             path: 'deleteCourse/:id',
             element: <DeleteCourse />,
+          },
+        ],
+      },
+      {
+        path: 'modules',
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            path: '',
+            element: <AllModules />,
+            lazy: () => import('./pages/dashboard/module/all'),
+          },
+          {
+            path: 'addModule',
+            element: <AddModule />,
+            loader: fetchAllCourses,
+            lazy: () => import('./pages/dashboard/module/add'),
+          },
+          {
+            path: 'editModule/:id',
+            element: <EditModule />,
+            loader: fetchAllCourses,
+            lazy: () => import('./pages/dashboard/module/edit'),
+          },
+          {
+            path: 'deleteModule/:id',
+            element: <DeleteModule />,
           },
         ],
       },
