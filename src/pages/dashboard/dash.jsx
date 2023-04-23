@@ -11,11 +11,10 @@ export default function MainDashboard() {
   };
 
   return (
-    <section>
-      <h1>Dashboard</h1>
+    <>
       <button className='p-2 bg-rose-300 text-white' onClick={handleLogout}>
         Logout
       </button>
-    </section>
+    </>
   );
 }

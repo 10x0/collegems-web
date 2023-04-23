@@ -10,7 +10,7 @@ http.interceptors.request.use(
   function (config) {
     // Do something before request is sent
     const session = JSON.parse(localStorage.getItem('_session_') ?? '{}');
-    if (session) {
+    if (session?.name) {
       config.headers = {
         authorization: `Bearer ${session.token}`,
       };

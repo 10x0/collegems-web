@@ -1,15 +1,19 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { Navigate, createBrowserRouter } from 'react-router-dom';
 import { AuthLayout, DashboardLayout, RootLayout } from './layouts';
 import HomePage from './pages/home';
 import LoginPage from './pages/login';
-import MainDashboard from './pages/dashboard/dash';
 import AboutPage from './pages/about';
 import PolicyPage from './pages/policy';
 import TermsPage from './pages/terms';
+import ErrorPage from './pages/error';
+import { fetchAllCourses } from './services/courseServices';
+import AllCourses from './pages/dashboard/course/all';
+import NotFoundPage from './pages/not-found';
 
 export const router = createBrowserRouter([
   {
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
@@ -43,16 +47,20 @@ export const router = createBrowserRouter([
     path: 'dash',
     element: <DashboardLayout />,
     children: [
+      { path: '', element: <Navigate to='enrollees' replace /> },
       {
-        path: '',
-        element: <MainDashboard />,
+        path: 'enrollees',
+        element: <h1>Enrollees</h1>,
       },
       {
-        path: 'search',
-        element: <h1>Search</h1>,
+        path: 'courses',
+        loader: fetchAllCourses,
+        errorElement: <ErrorPage />,
+        element: <AllCourses />,
+        lazy: () => import('./pages/dashboard/course/all'),
       },
+      { path: '*', element: <NotFoundPage /> },
     ],
   },
-
-  { path: '*', element: <h1>Not found</h1> },
+  { path: '*', element: <NotFoundPage /> },
 ]);
