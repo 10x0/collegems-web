@@ -19,6 +19,7 @@ import EditModule from './pages/dashboard/module/edit';
 import OurCourses from './pages/courses';
 import CourseWithID from './pages/courses/[id]';
 import ApplyPage from './pages/apply';
+import ThanksPage from './pages/thanks';
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
       {
         path: 'terms',
         element: <TermsPage />,
+      },
+      {
+        path: 'thanks',
+        element: <ThanksPage />,
       },
       {
         path: '',

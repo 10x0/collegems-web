@@ -40,6 +40,7 @@ export default function CourseWithID() {
       <section className='flex justify-center'>
         <Link
           to='apply'
+          state={course}
           className='p-2 px-4 text-white bg-indigo-700 hover:bg-indigo-800'
         >
           Apply Now
