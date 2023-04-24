@@ -51,8 +51,8 @@ export default function Sidebar() {
 
 const navItems = [
   {
-    label: 'New Applications',
-    path: '/dash/newApplications',
+    label: 'Applications',
+    path: '/dash/applications',
     icon: <RiMailUnreadFill />,
   },
   {

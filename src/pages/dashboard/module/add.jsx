@@ -7,6 +7,7 @@ import { useMutation } from '@tanstack/react-query';
 import Spinner from '../../../components/Spinner';
 import { addModule } from '../../../services/moduleServices';
 import { useLoaderData } from 'react-router-dom';
+import { getYears } from '../../../utils/getYears';
 
 export default function AddModule() {
   const navigate = useNavigate();
@@ -126,11 +127,3 @@ export default function AddModule() {
     </section>
   );
 }
-
-const getYears = (duration) => {
-  var years = [];
-  for (var i = 1; i <= duration; i++) {
-    years.push(i);
-  }
-  return years;
-};

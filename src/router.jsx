@@ -13,9 +13,12 @@ import EditCourse from './pages/dashboard/course/edit';
 import DeleteCourse from './pages/dashboard/course/delete';
 import AllModules from './pages/dashboard/module/all';
 import DeleteModule from './pages/dashboard/module/delete';
-import { fetchAllCourses } from './services/courseServices';
+import { fetchAllCourses, fetchCourseWithId } from './services/courseServices';
 import AddModule from './pages/dashboard/module/add';
 import EditModule from './pages/dashboard/module/edit';
+import OurCourses from './pages/courses';
+import CourseWithID from './pages/courses/[id]';
+import ApplyPage from './pages/apply';
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +28,26 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage />,
+      },
+      {
+        path: 'courses',
+        children: [
+          { path: '', loader: fetchAllCourses, element: <OurCourses /> },
+          {
+            path: ':id',
+            children: [
+              {
+                path: '',
+                loader: ({ params }) => fetchCourseWithId(params.id),
+                element: <CourseWithID />,
+              },
+              {
+                path: 'apply',
+                element: <ApplyPage />,
+              },
+            ],
+          },
+        ],
       },
       {
         path: 'about',

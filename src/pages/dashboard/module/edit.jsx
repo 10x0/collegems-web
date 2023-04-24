@@ -9,6 +9,7 @@ import { editModule } from '../../../services/moduleServices';
 import { useLoaderData } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { getYears } from '../../../utils/getYears';
 
 export default function EditModule() {
   const navigate = useNavigate();
@@ -130,11 +131,3 @@ export default function EditModule() {
     </section>
   );
 }
-
-const getYears = (duration) => {
-  var years = [];
-  for (var i = 1; i <= duration; i++) {
-    years.push(i);
-  }
-  return years;
-};
