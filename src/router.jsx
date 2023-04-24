@@ -20,6 +20,8 @@ import OurCourses from './pages/courses';
 import CourseWithID from './pages/courses/[id]';
 import ApplyPage from './pages/apply';
 import ThanksPage from './pages/thanks';
+import AllApplications from './pages/dashboard/application/all';
+import DeleteApplication from './pages/dashboard/application/delete';
 
 export const router = createBrowserRouter([
   {
@@ -82,10 +84,24 @@ export const router = createBrowserRouter([
     path: 'dash',
     element: <DashboardLayout />,
     children: [
-      { path: '', element: <Navigate to='enrollees' replace /> },
+      { path: '', element: <Navigate to='applications' replace /> },
       {
         path: 'enrollees',
         element: <h1>Enrollees</h1>,
+      },
+      {
+        path: 'applications',
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            path: '',
+            element: <AllApplications />,
+          },
+          {
+            path: 'deleteApplication/:id',
+            element: <DeleteApplication />,
+          },
+        ],
       },
       {
         path: 'courses',
@@ -137,6 +153,7 @@ export const router = createBrowserRouter([
           },
         ],
       },
+
       { path: '*', element: <NotFoundPage /> },
     ],
   },

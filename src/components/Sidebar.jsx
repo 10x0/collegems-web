@@ -2,12 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { NavLink } from 'react-router-dom';
 
-import {
-  RiMailUnreadFill,
-  RiArticleFill,
-  RiBook2Fill,
-  RiTeamFill,
-} from 'react-icons/ri';
+import { RiMailUnreadFill, RiArticleFill, RiBook2Fill } from 'react-icons/ri';
 
 export default function Sidebar() {
   const navigate = useNavigate();
@@ -54,11 +49,6 @@ const navItems = [
     label: 'Applications',
     path: '/dash/applications',
     icon: <RiMailUnreadFill />,
-  },
-  {
-    label: 'Enrollees',
-    path: '/dash/enrollees',
-    icon: <RiTeamFill />,
   },
   {
     label: 'Courses',

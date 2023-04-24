@@ -7,3 +7,17 @@ export const sendApplication = (data) => {
     .then((response) => response.data)
     .catch(handleError);
 };
+
+export const deleteApplication = (id) => {
+  return http
+    .delete(`/applications/${id}`)
+    .then((response) => response.data)
+    .catch(handleError);
+};
+
+export const fetchAllApplications = () => {
+  return http
+    .get('/applications')
+    .then((response) => response.data)
+    .catch(handleError);
+};

@@ -19,7 +19,7 @@ export default function ApplyPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     mutation.mutate({
-      id: course._id,
+      course: course._id,
       firstName,
       lastName,
       email,
